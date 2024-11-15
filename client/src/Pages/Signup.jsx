@@ -8,7 +8,6 @@ import ContNav from './ContNav'
 import axios from 'axios'
 
 
-
 function Signup() {
 
     const [formData, setFormData] = useState([
