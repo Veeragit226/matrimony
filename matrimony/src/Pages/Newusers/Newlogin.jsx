@@ -23,9 +23,10 @@ function Newlogin() {
         const { data } = await axios.post("http://localhost:5000/api/login", formData);
         localStorage.setItem("token", data.token);
         alert("Logged in successfully");
-        navigate('/')
+        navigate('/home')
       } catch (error) {
         console.error("Error logging in:", error);
+        alert("Incorrect email or password",error)
         console.log(formData)
       }
     }
@@ -65,7 +66,7 @@ function Newlogin() {
                             <div className=" text-gray-900 mb-6 font-medium text-3xl ">
                                 <h2 className=' font-light text-[15px]'>Start for free</h2>
                                 Sign in to Matrimony
-                                <h2 className='text-amber-950 text-[15px] font-medium'>Not a Member? <a className='text-blue-500' href="Login"><Link to={'/signup'}> Sign Up Now</Link></a></h2>
+                                <h2 className='text-amber-950 text-[15px] font-medium'>Not a Member? <a className='text-blue-500' href="Login"><Link to={'/newsignup'}> Sign Up Now</Link></a></h2>
                             </div>
                             <div className="space-y-6">
 

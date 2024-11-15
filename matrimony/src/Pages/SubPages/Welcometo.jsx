@@ -67,7 +67,7 @@ function Welcometo() {
              
 
 
-             <section className="text-md text-center justify-center text-yellow-900 border border-yellow-950 flex rounded-xl p-5 gap-10  lg:text-2xl">
+             <section className="text-md text-center justify-center text-yellow-900 border border-yellow-950 flex rounded-xl p-5 gap-10  md:text-xl  lg:text-2xl">
           {stats.map((stat) => (
             <div key={stat.id} className="">
               <h1 className="order-first text-3xl font-semibold tracking-tight ">

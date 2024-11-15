@@ -6,9 +6,14 @@ import ContNav from './ContNav'
 import axios from 'axios'
 
 function Resetpassword() {
+<<<<<<< HEAD
 
 
     const [formData, setFormData] = useState({ email:"",resetpassword: "" });
+=======
+    
+    const [formData, setFormData] = useState({ email:"", password: "", otp:"" });
+>>>>>>> b076481ea3964246d4026f80586c64073d5fb605
 
     const navigate =useNavigate()
     const handleChange = (e) => {
@@ -16,10 +21,27 @@ function Resetpassword() {
     };
   
     const handleSubmit = async (e) => {
+        const VerificationOtp = localStorage.getItem("token")
+        console.log("verifyotp",VerificationOtp)
       e.preventDefault();
+<<<<<<< HEAD
       try {
         const  data  = await axios.post('http://localhost:5000/api/resetpassword',formData);
         localStorage.getItem("token", data.otp);
+=======
+      try { 
+        console.log("Verifing_TOken", formData.otp)
+        const  data  = await axios.post(`http://localhost:5000/api/reset-password/${VerificationOtp}`, {
+            // email:formData.email,
+            // password:formData.password,
+            otp:formData.otp
+        });
+        console.log("Data", )
+        localStorage.setItem("token", data.otp);
+
+         console.log('Response:', data);
+        // alert("Logged in successfully");
+>>>>>>> b076481ea3964246d4026f80586c64073d5fb605
         navigate('/login')
       } catch (error) {
         console.error("Error logging in:", error);

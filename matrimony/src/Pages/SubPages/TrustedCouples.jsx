@@ -68,7 +68,7 @@ function TrustedCouples() {
             deviceType
             dotListClass="custom-dot-list-style"
 
-            itemClass="carousel-item-padding-40-px ">
+            itemClass="carousel-item-padding-40-px hover:scale-90 transition-all duration-500  ">
 
             <Card
               shadow={false}
@@ -78,7 +78,7 @@ function TrustedCouples() {
                 floated={false}
                 shadow={false}
                 color="transparent"
-                className="absolute inset-0 m-0 h-full w-full  rounded-none    our-ser-bg"
+                className="absolute inset-0 m-0 h-full w-full  rounded-none   our-ser-bg"
 
               >
                 <div className="to-bg-black-10 absolute inset-0 h-full w-full " />

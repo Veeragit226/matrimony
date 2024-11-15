@@ -215,7 +215,7 @@ function Dhome() {
             deviceType
             dotListClass="custom-dot-list-style"
 
-            itemClass="carousel-item-padding-40-px p-3 ">
+            itemClass="carousel-item-padding-40-px p-3  transition-all  hover:scale-x-110 hover:scale-y-110">
 
 
 

@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Dialog, DialogPanel,DialogBackdrop, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
+import { useEffect, useState } from 'react'
+import { Dialog, DialogPanel, DialogBackdrop, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Logo from '../assets/images/logo-a.png'
 import Profile from '../assets/images/profile.png'
@@ -8,7 +8,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Link } from 'react-router-dom'
 import { RiYoutubeFill, RiInstagramFill, RiLinkedinFill, RiWhatsappFill, RiFacebookFill, RiTwitterFill } from "react-icons/ri";
 
-
+import axios from 'axios'
 
 import {
   Card,
@@ -48,6 +48,14 @@ const user = [
 export default function Navebar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
+  const [test,setTest]=useState([])
+  useEffect(()=>{
+
+    axios.get('http://localhost:5000/api/getuserbyid')
+    .then(test=>setTest(test.data))
+    .catch(err => console.log(err))
+  },[])
+  
 
   return (
     <>
@@ -58,11 +66,11 @@ export default function Navebar() {
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
               <Link to={'/home'}>
-              <img
-                alt=""
-                src={Logo}
-                className="h-10 w-auto"
-              /></Link>
+                <img
+                  alt=""
+                  src={Logo}
+                  className="h-10 w-auto"
+                /></Link>
             </a>
           </div>
           <div className="flex lg:hidden  ">
@@ -104,11 +112,11 @@ export default function Navebar() {
               TOP PAGES
             </FlyoutLink>
             <FlyoutLink href="#" className="text-sm/5  " >
-             <Link to={'/plan'}> PLANING </Link>
+              <Link to={'/plan'}> PLANING </Link>
             </FlyoutLink>
             <FlyoutLink href="#" className="text-sm/5  " >
-            <Link to={'/signup'}>
-              REGISTER</Link>
+              <Link to={'/signup'}>
+                REGISTER</Link>
             </FlyoutLink>
             <FlyoutLink href="#" className="text-sm/5  " FlyoutContent={Dashboard}>
               DASHBOARD
@@ -116,7 +124,7 @@ export default function Navebar() {
 
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <Menu as="div" className="relative ml-3">
+           <Menu as="div" className="relative ml-3">
               <div>
                 <MenuButton className="relative  flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                   <span className="absolute -inset-1.5" />
@@ -128,15 +136,15 @@ export default function Navebar() {
                   />
                 </MenuButton>
               </div>
-              <MenuItems
+              {/* <MenuItems
                 transition
                 className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
               >
-                {/* <MenuItem>
+                <MenuItem>
                   <a href="#" className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
                     Your Profile
                   </a>
-                </MenuItem> */}
+                </MenuItem>
                 <MenuItem>
                 <Link to={'/login'} className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"> <a >
                    Login
@@ -148,28 +156,30 @@ export default function Navebar() {
                     Sign Up
                   </a></Link>
                 </MenuItem>
-              </MenuItems>
-            </Menu>
+              </MenuItems> */}
+            </Menu> 
           </div>
 
 
           <div className="hidden ps-2 lg:flex lg:gap-x-8">
-            {user.map((item) => (
+            {test.map((item) => (
 
-              <a key={item.name} href={item.href} className=''>
-                <span className='text-sm/5 text-gray-600'>{item.headding}</span><br />
-                {/* <span className=" text-yellow-900">{item.name}</span> */}
+              <a key={item._id} className=''>
+                <span className='text-sm/5 text-gray-600'>{item.email}</span><br />
+                <span className=" text-yellow-900">{item.name}</span>
 
               </a>
             ))}
+
+            <Link to={'/'} className='text-sm/5 text-gray-600'>Logout</Link>
           </div>
         </nav>
         <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
           <div className="fixed inset-0 z-50" />
           <DialogBackdrop
-        transition
-        className="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity duration-500 ease-in-out data-[closed]:opacity-0"
-      />
+            transition
+            className="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity duration-500 ease-in-out data-[closed]:opacity-0"
+          />
           <DialogPanel className="fixed  inset-y-0 right-0 z-50 w-full  overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-between">
               <p className="-m-1.5 p-1.5">
@@ -179,7 +189,7 @@ export default function Navebar() {
                   src={Logo}
                   className="h-8 w-auto"
                 /></Link>
-                
+
               </p>
               <button
                 type="button"
@@ -357,22 +367,22 @@ const Explore = () => {
 
           <a className=" block text-sm ">
             <Link to={'/allprofiles'}>
-            <Card className="card-dtl card-child-1 max-w-xs transition duration-300 ease-in-out hover:scale-110">
+              <Card className="card-dtl card-child-1 max-w-xs transition duration-300 ease-in-out hover:scale-110">
 
-              <CardBody>
-                <Typography variant="h5">
-                  Browse Profile
-                </Typography>
-                <Typography>
+                <CardBody>
+                  <Typography variant="h5">
+                    Browse Profile
+                  </Typography>
+                  <Typography>
 
-                  1200+ VERIFIED PROFILE
-                </Typography>
-              </CardBody>
-              <CardFooter className="pt-0 ">
-                <Button className="px-3 py-2 bg-black">Read More</Button>
-              </CardFooter>
+                    1200+ VERIFIED PROFILE
+                  </Typography>
+                </CardBody>
+                <CardFooter className="pt-0 ">
+                  <Button className="px-3 py-2 bg-black">Read More</Button>
+                </CardFooter>
 
-            </Card>
+              </Card>
             </Link>
           </a>
 
@@ -430,12 +440,19 @@ const Allpages = () => {
         <div className="mb-3 flex-none space-y-3">
           <h3 className="font-semibold">PAGE SETS 1</h3>
           <a href="#" className="block  text-sm hover:underline">
-           <Link to={'/allprofiles'}> ALL PROFILES </Link>
+            <Link to={'/allprofiles'}> ALL PROFILES </Link>
           </a>
           <a href="#" className="block text-sm hover:underline">
-           <Link to={'/profiles-details'}> PROFILE DETAILS </Link>
+            <Link to={'/profiles-details'}> PROFILE DETAILS </Link>
+          </a>
+
+          <a href="#" className="block  text-sm hover:underline">
+            <Link to={'/plan'}> PRICING PLANING </Link>
           </a>
           <a href="#" className="block text-sm hover:underline">
+            <Link to={'/askyourdoubts'}> ASK YOUR DOUBTS</Link>
+          </a>
+          {/* <a href="#" className="block text-sm hover:underline">
             WEDDING
           </a>
           <a href="#" className="block text-sm hover:underline">
@@ -443,42 +460,40 @@ const Allpages = () => {
           </a>
           <a href="#" className="block text-sm hover:underline">
             OUR SERVICES
-          </a>
+          </a> */}
         </div>
         <div className="mb-3  flex-none space-y-3">
           <h3 className="font-semibold">PAGE SETS 2</h3>
+          
+          <a href="#" className="block text-sm hover:underline">
+            <Link to={'/login'}> LOGIN</Link>
+          </a>
+          <a href="#" className="block text-sm hover:underline">
+            <Link to={'/signup'}> SING-UP</Link>
+          </a>
           <a href="#" className="block  text-sm hover:underline">
-           <Link to={'/plan'}> PRICING PLANING </Link>
+            <Link to={'/contactus'}>CONTACT</Link>
           </a>
           <a href="#" className="block text-sm hover:underline">
-           <Link to={'/login'}> LOGIN</Link>
+            <Link to={'/aboutus'}>ABOUT</Link>
           </a>
-          <a href="#" className="block text-sm hover:underline">
-           <Link to={'/signup'}> SING-UP</Link>
-          </a>
-          <a href="#" className="block text-sm hover:underline">
-            PHOTO GALLERY 1
-          </a>
-          <a href="#" className="block text-sm hover:underline">
-            PHOTO GALLERY 2
-          </a>
+         
         </div>
         <div className="mb-3 flex-none space-y-3">
           <h3 className="font-semibold">PAGE SETS 3</h3>
-          <a href="#" className="block  text-sm hover:underline">
-           <Link to={'/contactus'}>CONTACT</Link>
-          </a>
-          <a href="#" className="block text-sm hover:underline">
-           <Link to={'/aboutus'}>ABOUT</Link> 
-          </a>
-          <a href="#" className="block text-sm hover:underline">
-          <Link to={'/askyourdoubts'}> ASK YOUR DOUBTS</Link>
-          </a>
+          
+        
           <a href="#" className="block text-sm hover:underline">
             <Link to={'/faq'}>FAQ</Link>
           </a>
           <a href="#" className="block text-sm hover:underline">
             <Link to={'/error'}>404</Link>
+          </a>
+           <a href="#" className="block text-sm hover:underline">
+            PHOTO GALLERY 1
+          </a>
+          <a href="#" className="block text-sm hover:underline">
+            PHOTO GALLERY 2
           </a>
         </div>
 
@@ -491,30 +506,30 @@ const Allpages = () => {
         <div className="mb-3  space-y-3">
 
           <a href="#" className="block  text-sm hover:underline">
-           <Link to={'/dashboard'}> DASHBOARD</Link>
+            <Link to={'/dashboard'}> DASHBOARD</Link>
           </a>
           <a href="#" className="block text-sm hover:underline">
-           <Link to={'/myplan'}> MY PLAN DETAILS</Link>
+            <Link to={'/myplan'}> MY PLAN DETAILS</Link>
           </a>
 
         </div>
         <div className="mb-3  space-y-3">
 
           <a href="#" className="block  text-sm hover:underline">
-           <Link to={'/profile'}> MY PROFILE</Link>
+            <Link to={'/profile'}> MY PROFILE</Link>
           </a>
           <a href="#" className="block text-sm hover:underline">
-           <Link to={'/settings'}> PROFILE SETTINGS</Link>
+            <Link to={'/settings'}> PROFILE SETTINGS</Link>
           </a>
 
         </div>
         <div className="mb-3  space-y-3">
 
           <a href="#" className="block  text-sm hover:underline">
-           <Link to={'/intrest'}> INTEREST </Link>
+            <Link to={'/intrest'}> INTEREST </Link>
           </a>
           <a href="#" className="block text-sm hover:underline">
-           <Link to={'/edite/profile'}> EDIT FULL PROFILE </Link>
+            <Link to={'/edite/profile'}> EDIT FULL PROFILE </Link>
           </a>
         </div>
 
@@ -535,26 +550,26 @@ const Toppages = () => {
       <div className="mb-3  space-y-3">
 
         <a href="#" className="block  text-sm hover:underline">
-         <Link to={'/allprofiles'}> ALL PROFILES </Link>
+          <Link to={'/allprofiles'}> ALL PROFILES </Link>
         </a>
         <a href="#" className="block text-sm hover:underline">
-         <Link to={'/profiles-details'}> PROFILE DETAILS</Link>
+          <Link to={'/profiles-details'}> PROFILE DETAILS</Link>
         </a>
-       
+
         <a href="#" className="block text-sm hover:underline">
-         <Link to={'/aboutus'}> ABOUT </Link>
+          <Link to={'/aboutus'}> ABOUT </Link>
         </a>
         <a href="#" className="block text-sm hover:underline">
           <Link to={'/contactus'}>CONTACT</Link>
         </a>
         <a href="#" className="block text-sm hover:underline">
-         <Link to={'/login'}> LOGIN </Link>
+          <Link to={'/login'}> LOGIN </Link>
         </a>
         <a href="#" className="block text-sm hover:underline">
-         <Link to={'/signup'}> SIGN-UP </Link>
+          <Link to={'/signup'}> SIGN-UP </Link>
         </a>
         <a href="#" className="block text-sm hover:underline">
-         <Link to={'/plan'}> PRICING PLANS </Link>
+          <Link to={'/plan'}> PRICING PLANS </Link>
         </a>
       </div>
 
@@ -572,30 +587,30 @@ const Dashboard = () => {
       <div className="mb-3  space-y-3">
 
         <a href="#" className="block  text-sm hover:underline">
-        <Link to={'/dashboard'}>
-          DASHBOARD</Link>
+          <Link to={'/dashboard'}>
+            DASHBOARD</Link>
         </a>
         <a href="#" className="block text-sm hover:underline"><Link to={'/profile'}>
           MY PROFILE</Link>
         </a>
         <a href="#" className="block text-sm hover:underline">
-        <Link to={'/intrest'}>
-          INTEREST
+          <Link to={'/intrest'}>
+            INTEREST
           </Link>
         </a>
         <a href="#" className="block text-sm hover:underline">
-        <Link to={'/myplan'}>
-          MY PLAN DETAILS 
+          <Link to={'/myplan'}>
+            MY PLAN DETAILS
           </Link>
         </a>
         <a href="#" className="block text-sm hover:underline">
           <Link to={'/settings'}> PROFILE SETTINGS</Link>
         </a>
         <a href="#" className="block text-sm hover:underline">
-         <Link to={'/edite/profile'}> EDIT FULL PROFILE</Link>
+          <Link to={'/edite/profile'}> EDIT FULL PROFILE</Link>
         </a>
         <a href="#" className="block text-sm hover:underline">
-         <Link to={'/signup'}> SIGN-UP </Link>
+          <Link to={'/signup'}> SIGN-UP </Link>
         </a>
 
       </div>

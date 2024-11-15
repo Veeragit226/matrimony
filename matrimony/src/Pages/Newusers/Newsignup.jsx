@@ -47,6 +47,7 @@ function Newsignup() {
             navigate('/login')
         } catch (error) {
             console.error("Error registering:", error);
+            alert("email already exists",error)
         }
     };
 
@@ -87,7 +88,7 @@ function Newsignup() {
                             <div className=" text-gray-900 mb-6 font-medium text-3xl ">
                                 <h2 className=' font-light text-[15px]'>Start for free</h2>
                                 Sign up to Matrimony
-                                <h2 className='text-amber-950 text-[15px] font-medium'>Already have a Member? <a className='text-blue-500' href="Login"><Link to={'/login'}> Login Now </Link></a></h2>
+                                <h2 className='text-amber-950 text-[15px] font-medium'>Already have a Member? <a className='text-blue-500' href="Login"><Link to={'/newlogin'}> Login Now </Link></a></h2>
                             </div>
                             <div className="space-y-6">
 

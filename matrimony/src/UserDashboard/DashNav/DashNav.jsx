@@ -1,6 +1,5 @@
 import React from 'react'
-import user from '../../assets/images/userDashboard/1.jpg'
-
+import user1 from '../../assets/images/userDashboard/profile.jpg'
 
 function DashNav() {
     return (
@@ -8,13 +7,13 @@ function DashNav() {
        
             <div className="flex flex-col bg-clip-border rounded-xl bg-white text-gray-700  p-4  drop-shadow-md shadow-blue-gray-900/5">
                 <div className="mb-2 p-1">
-                    <img src={user} className='w-full rounded-2xl' alt="" />
+                    <img src={user1} className='w-full rounded-2xl transition-all transform hover:scale-110' alt="" />
                 </div>
                 <nav className="flex flex-col gap-1 min-w-[240px] p-2 font-sans text-base font-normal text-gray-700">
                     <div
                         role="button"
                         tabIndex={0}
-                        className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+                        className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all  hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
                     >
                         <div className="grid place-items-center mr-4">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-dashboard">

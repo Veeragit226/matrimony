@@ -8,7 +8,12 @@ import {
   CardBody,
   CardFooter
 } from "@material-tailwind/react";
-import sample from '../../assets/images/userDashboard/1.jpg'
+import image1 from '../../assets/images/userDashboard/1.jpg'
+import image2 from '../../assets/images/userDashboard/2.jpg'
+import image3 from '../../assets/images/userDashboard/3.jpg'
+import image4 from '../../assets/images/userDashboard/13.jpg'
+import image5 from '../../assets/images/userDashboard/14.jpg'
+import image6 from '../../assets/images/userDashboard/16.jpg'
 
 
 function Tabnav() {
@@ -23,18 +28,18 @@ function Tabnav() {
 
 
   const newrequest = [
-    { name: 'Rashma', city: 'Trichy', age: '27', height: '6.4', job: 'working', requesttime: ' 10:30AM,18 August 2024', viewbutton: 'view full profile', image: '../../assets/images/userDashboard/1.jpg' },
-    { name: 'Androw', city: 'Trichy', age: '27', height: '6.4', job: 'working', requesttime: ' 10:30AM,18 August 2024', viewbutton: 'view full profile', image: '../../assets/images/userDashboard/1.jpg' },
-    { name: 'Androw', city: 'Trichy', age: '27', height: '6.4', job: 'working', requesttime: '10:30AM,18 August 2024', viewbutton: 'view full profile', image: '../../assets/images/userDashboard/1.jpg' },
-    { name: 'Androw', city: 'Trichy', age: '27', height: '6.4', job: 'working', requesttime: '10:30AM,18 August 2024', viewbutton: 'view full profile', image: '../../assets/images/userDashboard/1.jpg' },
+    { name: 'Rashma', city: 'Trichy', age: '27', height: '6.4', job: 'working', requesttime: ' 10:30AM,18 August 2024', viewbutton: 'view full profile', src:image1  },
+    { name: 'Androw', city: 'Trichy', age: '27', height: '6.4', job: 'working', requesttime: ' 10:30AM,18 August 2024', viewbutton: 'view full profile', src:image2  },
+    { name: 'Androw', city: 'Trichy', age: '27', height: '6.4', job: 'working', requesttime: '10:30AM,18 August 2024', viewbutton: 'view full profile', src:image3  },
+    { name: 'Androw', city: 'Trichy', age: '27', height: '6.4', job: 'working', requesttime: '10:30AM,18 August 2024', viewbutton: 'view full profile', src:image4  },
   ]
   const acceptrequest = [
-    { name: 'Rashma', city: 'Trichy', age: '27', height: '6.4', job: 'working', requesttime: ' 10:30AM,18 August 2024', viewbutton: 'view full profile', image: '../../assets/images/userDashboard/1.jpg' },
-    { name: 'Androw', city: 'Trichy', age: '27', height: '6.4', job: 'working', requesttime: ' 10:30AM,18 August 2024', viewbutton: 'view full profile', image: '../../assets/images/userDashboard/1.jpg' },
+    { name: 'Rashma', city: 'Trichy', age: '27', height: '6.4', job: 'working', requesttime: ' 10:30AM,18 August 2024', viewbutton: 'view full profile', src:image5  },
+    { name: 'Androw', city: 'Trichy', age: '27', height: '6.4', job: 'working', requesttime: ' 10:30AM,18 August 2024', viewbutton: 'view full profile', src:image2  },
 
   ]
   const rejectrequest = [
-    { name: 'Rashma', city: 'Trichy', age: '27', height: '6.4', job: 'working', requesttime: ' 10:30AM,18 August 2024', viewbutton: 'view full profile', image: '../../assets/images/userDashboard/1.jpg' },
+    { name: 'Rashma', city: 'Trichy', age: '27', height: '6.4', job: 'working', requesttime: ' 10:30AM,18 August 2024', viewbutton: 'view full profile', src:image6 },
 
   ]
 
@@ -55,7 +60,10 @@ function Tabnav() {
             >
               {tab.label}
             </button>
+            
           ))}
+
+          
         </div>
 
         {/* Tab Content */}
@@ -67,12 +75,20 @@ function Tabnav() {
             <>         
            
               {newrequest.map((tab) => {
-                const { name, city, age, height, job, requesttime, viewbutton, image } = tab;
+                const { name, city, age, height, job, requesttime, viewbutton, src } = tab;
                 return (
                   <>
-                   <Card className='w-full p-2 my-5   max-w-9xl grid text-yellow-900 justify-center text-start grid-cols-1 md:grid-cols-4 sm:grid-cols-1  lg:grid-cols-4'>
+                   <Card className='w-full p-2 my-5
+                      max-w-9xl
+                       grid text-yellow-900
+                        justify-center text-start
+                         grid-cols-1 
+                         md:grid-cols-4 
+                         sm:grid-cols-1 
+                          lg:grid-cols-4
+                          '>
                     <CardHeader className='bg-yellow-900  max-w-xl ' >
-                      <img key={name} src={sample} alt="" className='object-cover ' />
+                      <img key={name} src={src} alt="" className='object-cover transition-all hover:scale-110' />
                       
                     </CardHeader>
                     <CardBody className=' cols-grow col-span-2'>
@@ -122,12 +138,12 @@ function Tabnav() {
             <>         
            
               {acceptrequest.map((tab) => {
-                const { name, city, age, height, job, requesttime, viewbutton, image } = tab;
+                const { name, city, age, height, job, requesttime, viewbutton, src } = tab;
                 return (
                   <>
                    <Card className='w-full p-2 my-5   max-w-9xl grid text-yellow-900 justify-center text-start grid-cols-1 md:grid-cols-4 sm:grid-cols-1  lg:grid-cols-4'>
                     <CardHeader className='bg-yellow-900  max-w-xl ' >
-                      <img key={name} src={sample} alt="" className='object-cover ' />
+                      <img key={name} src={src} alt="" className='object-cover  transition-all hover:scale-110' />
                       
                     </CardHeader>
                     <CardBody className=' cols-grow col-span-2'>
@@ -175,12 +191,12 @@ function Tabnav() {
             <>         
            
               {rejectrequest.map((tab) => {
-                const { name, city, age, height, job, requesttime, viewbutton, image } = tab;
+                const { name, city, age, height, job, requesttime, viewbutton, src } = tab;
                 return (
                   <>
                    <Card className='w-full p-2 my-5   max-w-9xl grid text-yellow-900 justify-center text-start grid-cols-1 md:grid-cols-4 sm:grid-cols-1  lg:grid-cols-4'>
                     <CardHeader className='bg-yellow-900  max-w-xl ' >
-                      <img key={name} src={sample} alt="" className='object-cover ' />
+                      <img key={name} src={src} alt="" className='object-cover  transition-all hover:scale-110 ' />
                       
                     </CardHeader>
                     <CardBody className=' cols-grow col-span-2'>
