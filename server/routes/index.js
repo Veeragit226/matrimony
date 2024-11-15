@@ -1,24 +1,11 @@
-const express = require('express')
+const express = require('express');
+const { loginUser,registerUser,forgotPassword, verifyOtp, resetPassword } = require ('../controller/usercontroller');
+const userRouter = express.Router();
 
-const verifyToken = require('../middleware');
-const router = express.Router()
+userRouter.post("/register",registerUser);
+userRouter.post("/login",loginUser);
+userRouter.post('/forgotpassword', forgotPassword);
+userRouter.post('/verifyotp', verifyOtp);
+userRouter.post('/resetpassword', resetPassword);
 
-const { signup, login, resetpassword, resetPasswordToken } = require('../controller/usercontroller');
-
-
-// router.get('/test', (req,res)=>
-// res.json({message: "Api Testing successfully"}));
-
-router.post('/signup',signup)
-router.post('/login',login)
-router.post('/resetpassword',resetpassword)
-router.post('/reset-password/:token',resetPasswordToken)
-
-router.get('/data',verifyToken,(req,res)=>{
-    res.json({message: `welcome,${req.user.email}! this is protected data`})
-});
-
-
-
-module.exports = router
-
+module.exports=userRouter;

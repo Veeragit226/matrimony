@@ -18,7 +18,7 @@ function Forgotpassword() {
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {
-        const { data } = await axios.post("http://localhost:5000/api/resetpassword", formData);
+        const { data } = await axios.post("http://localhost:5000/api/forgotpassword", formData);
         localStorage.setItem("token", data.token);
         // alert("Logged in successfully");
         navigate('/otp')

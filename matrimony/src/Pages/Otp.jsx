@@ -8,7 +8,7 @@ import axios from 'axios'
 function Otp() {
 
 
-    const [formData, setFormData] = useState({ email: "", password:"" });
+    const [formData, setFormData] = useState({ email: "", otp:"" });
 
     const navigate =useNavigate()
     const handleChange = (e) => {
@@ -18,7 +18,7 @@ function Otp() {
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {
-        const { data } = await axios.post(`http://localhost:5000/api/reset-password/${formData.otp}`,formData);
+        const { data } = await axios.post('http://localhost:5000/api/verifyotp',formData);
         localStorage.setItem("token", data.otp);
         // alert("Logged in successfully");
         navigate('/resetpassword')
