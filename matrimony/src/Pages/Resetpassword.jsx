@@ -8,7 +8,7 @@ import axios from 'axios'
 function Resetpassword() {
 
     
-    const [formData, setFormData] = useState({ email:"", password: "", otp:"" });
+    const [formData, setFormData] = useState({ email:"", newpassword: "" });
 
     const navigate =useNavigate()
     const handleChange = (e) => {
@@ -16,17 +16,13 @@ function Resetpassword() {
     };
   
     const handleSubmit = async (e) => {
-        const VerificationOtp = localStorage.getItem("token")
-        console.log("verifyotp",VerificationOtp)
+        // const VerificationOtp = localStorage.getItem("token")
+        // console.log("verifyotp",VerificationOtp)
       e.preventDefault();
 
       try { 
         console.log("Verifing_TOken", formData.otp)
-        const  data  = await axios.post(`http://localhost:5000/api/reset-password/${VerificationOtp}`, {
-            // email:formData.email,
-            // password:formData.password,
-            otp:formData.otp
-        });
+        const  data  = await axios.post("http://localhost:5000/api/resetpassword" ,formData);
         console.log("Data", )
         localStorage.setItem("token", data.otp);
 

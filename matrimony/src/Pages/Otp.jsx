@@ -19,7 +19,7 @@ function Otp() {
       e.preventDefault();
       try {
         const { data } = await axios.post('http://localhost:5000/api/verifyotp',formData);
-        localStorage.setItem("token", data.otp);
+        // localStorage.setItem("token", data.otp);
         // alert("Logged in successfully");
         navigate('/resetpassword')
       } catch (error) {

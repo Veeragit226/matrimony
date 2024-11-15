@@ -15,23 +15,8 @@ function Newsignup() {
     const [formData, setFormData] = useState([
         {
             name: "",
-            age: "",
-
             email: "",
-            phone: "",
-            caste: "",
-            dob: "",
-            state: "",
-            district: "",
-            height: "",
-            weight: "",
-            education: "",
-            working: "",
-
-            password: "",
-            description: "",
-            gender: ""
-
+            password: ""
         }]);
     const navigate = useNavigate()
 
@@ -42,9 +27,9 @@ function Newsignup() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post("http://localhost:5000/api/signup", formData);
+            await axios.post("http://localhost:5000/api/register", formData);
             alert("Registered successfully");
-            navigate('/login')
+            navigate('/newlogin')
         } catch (error) {
             console.error("Error registering:", error);
             alert("email already exists",error)
@@ -108,21 +93,7 @@ function Newsignup() {
 
                                     </div>
                                 </div>
-                                {/* Age Field */}
-                                <div>
-                                    <label className="text-gray-800 text-sm mb-2 block">Age:</label>
-                                    <div className="relative flex items-center">
-                                        <input
-                                            onChange={handleChange}
-                                            name="age"
-                                            type="text"
-                                            required
-                                            className="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-2.5 rounded-md outline-blue-500"
-                                            placeholder="Enter Name"
-                                        />
-
-                                    </div>
-                                </div>
+                               
                                 {/* Email Field */}
                                 <div>
                                     <label className="text-gray-800 text-sm mb-2 block">Email Id:</label>
@@ -139,159 +110,7 @@ function Newsignup() {
                                     </div>
                                 </div>
 
-                                {/* Phone Number */}
-                                <div>
-                                    <label className="text-gray-800 text-sm mb-2 block">Phone Number:</label>
-                                    <div className="relative flex items-center">
-                                        <input
-                                            onChange={handleChange}
-                                            name="phone"
-                                            type="number"
-                                            required
-                                            className="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-2.5 rounded-md outline-blue-500"
-                                            placeholder="Enter email"
-                                        />
-
-                                    </div>
-                                </div>
-
-                                {/* caste Field */}
-                                <div>
-                                    <label className="text-gray-800 text-sm mb-2 block">Caste:</label>
-                                    <div className="relative flex items-center">
-                                        <input
-                                            onChange={handleChange}
-                                            name="caste"
-                                            type="text"
-                                            required
-                                            className="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-2.5 rounded-md outline-blue-500"
-                                            placeholder="Enter Name"
-                                        />
-
-                                    </div>
-                                </div>
-
-
-                                {/* DOB Field */}
-                                <div>
-                                    <label className="text-gray-800 text-sm mb-2 block">DOB:</label>
-                                    <div className="relative flex items-center">
-                                        <input
-                                            onChange={handleChange}
-                                            name="dob"
-                                            type="date"
-                                            required
-                                            className="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-2.5 rounded-md outline-blue-500"
-                                            placeholder="Enter Name"
-                                        />
-
-                                    </div>
-                                </div>
-
-
-                                {/* State Field */}
-                                <div>
-                                    <label className="text-gray-800 text-sm mb-2 block">State:</label>
-                                    <div className="relative flex items-center">
-                                        <input
-                                            onChange={handleChange}
-                                            name="state"
-                                            type="text"
-                                            required
-                                            className="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-2.5 rounded-md outline-blue-500"
-                                            placeholder="Enter Name"
-                                        />
-
-                                    </div>
-                                </div>
-
-
-                                {/* District Field */}
-                                <div>
-                                    <label className="text-gray-800 text-sm mb-2 block">District:</label>
-                                    <div className="relative flex items-center">
-                                        <input
-                                            onChange={handleChange}
-                                            name="district"
-                                            type="text"
-                                            required
-                                            className="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-2.5 rounded-md outline-blue-500"
-                                            placeholder="Enter Name"
-                                        />
-
-                                    </div>
-                                </div>
-
-
-                                {/* Height Field */}
-                                <div>
-                                    <label className="text-gray-800 text-sm mb-2 block">Height:</label>
-                                    <div className="relative flex items-center">
-                                        <input
-                                            onChange={handleChange}
-                                            name="height"
-                                            type="text"
-                                            required
-                                            className="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-2.5 rounded-md outline-blue-500"
-                                            placeholder="Enter Name"
-                                        />
-
-                                    </div>
-                                </div>
-
-                                {/* Weight Field */}
-                                <div>
-                                    <label className="text-gray-800 text-sm mb-2 block">Weight:</label>
-                                    <div className="relative flex items-center">
-                                        <input
-                                            onChange={handleChange}
-                                            name="weight"
-                                            type="text"
-                                            required
-                                            className="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-2.5 rounded-md outline-blue-500"
-                                            placeholder="Enter Name"
-                                        />
-
-                                    </div>
-                                </div>
-
-
-                                {/* Education Field */}
-                                <div>
-                                    <label className="text-gray-800 text-sm mb-2 block">Education:</label>
-                                    <div className="relative flex items-center">
-                                        <input
-                                            onChange={handleChange}
-                                            name="education"
-                                            type="text"
-                                            required
-                                            className="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-2.5 rounded-md outline-blue-500"
-                                            placeholder="Enter Name"
-                                        />
-
-                                    </div>
-                                </div>
-
-
-                                {/* working Field */}
-                                <div>
-                                    <label className="text-gray-800 text-sm mb-2 block">Working:</label>
-                                    <div className="relative flex items-center">
-                                        <input
-                                            onChange={handleChange}
-                                            name="working"
-                                            type="text"
-                                            required
-                                            className="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-2.5 rounded-md outline-blue-500"
-                                            placeholder="Enter Name"
-                                        />
-
-                                    </div>
-                                </div>
-
-
-
-
+                               
                                 {/* Password */}
                                 <div>
                                     <label className="text-gray-800 text-sm mb-2 block">Password:</label>
@@ -308,43 +127,6 @@ function Newsignup() {
 
                                     </div>
                                 </div>
-
-
-                                {/* Description Field */}
-                                <div>
-                                    <label className="text-gray-800 text-sm mb-2 block">Description:</label>
-                                    <div className="relative flex items-center">
-                                        <input
-                                            onChange={handleChange}
-                                            name="description"
-                                            type="text"
-                                            required
-                                            className="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-2.5 rounded-md outline-blue-500"
-                                            placeholder="Enter Name"
-                                        />
-
-                                    </div>
-                                </div>
-
-
-                                {/* Gender Field */}
-                                <div>
-                                    <label className="text-gray-800 text-sm mb-2 block">Gender:</label>
-                                    <div className="relative flex items-center">
-                                        <input
-                                            onChange={handleChange}
-                                            name="gender"
-                                            type="text"
-                                            required
-                                            className="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-2.5 rounded-md outline-blue-500"
-                                            placeholder="Enter Name"
-                                        />
-
-                                    </div>
-                                </div>
-
-
-
 
 
                                 {/* Remember me */}

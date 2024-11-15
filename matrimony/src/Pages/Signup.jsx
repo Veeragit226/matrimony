@@ -15,9 +15,7 @@ function Signup() {
         {
             name: "",
             email: "",
-            password: "",
-
-
+            password: ""
         }]);
     const navigate = useNavigate()
 
@@ -28,7 +26,7 @@ function Signup() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post("http://localhost:5000/api/signup", formData);
+            await axios.post("http://localhost:5000/api/register", formData);
             alert("Registered successfully");
             navigate('/login')
         } catch (error) {
